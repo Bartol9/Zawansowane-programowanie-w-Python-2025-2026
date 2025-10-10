@@ -1,0 +1,149 @@
+#zadanie_01
+suma_cyfr = []
+
+#po liczbach od 10 do 19 (range(10, 20) bo 20 się nie wlicza)
+for liczba in range(10, 20):
+    # Zamieniamy liczbę na string, żeby można było ją „rozbić” na cyfry
+    cyfry = str(liczba)
+
+    # Liczymy sumę cyfr – zamieniamy każdą literę (cyfrę) na int i sumujemy
+    suma = sum(int(cyfra) for cyfra in cyfry)
+
+    suma_cyfr.append(suma)
+
+print(suma_cyfr)
+
+#zadanie_02
+# Generujemy liczby od 5 do 13 (bo 5*9 = 45, ale my chcemy tylko 9 liczb >4)
+liczby = list(range(5, 14))
+
+# Dzielimy je na 3 wiersze po 3 liczby
+macierz = []
+for i in range(0, 9, 3):
+    macierz.append(liczby[i:i+3])
+
+print(macierz)
+
+
+#zadanie_03
+lista = [[1, 2, 3], [4, 5], [6, 7, 8]]
+
+# Spłaszczamy ją za pomocą wyrażenia listowego
+splaszczona = [element for podlista in lista for element in podlista]
+
+print(splaszczona)
+
+#zadanie_04
+macierz = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+# Nowa macierz, gdzie bierzemy tylko liczby > 5
+nowa_macierz = []
+
+for wiersz in macierz:
+    nowy_wiersz = []
+    for liczba in wiersz:
+        if liczba > 5:
+            nowy_wiersz.append(liczba)
+    nowa_macierz.append(nowy_wiersz)
+
+print(nowa_macierz)
+
+#zadanie_05
+
+A = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+B=[
+    [9,8,7],
+    [6,5,8],
+    [7,6,9]
+
+]
+# Mnożenie macierzy A x B
+C = [[sum(A[i][k] * B[k][j] for k in range(3)) for j in range(3)] for i in range(3)]
+
+print(C)
+
+#zadanie_06
+slownik = {
+    'kot': 2,
+    'piesek': 5,
+    'słowo': 10,
+    'dom': 3,
+    'komputer': 7
+}
+nowy_slownik = {s: l*2 for s, l in slownik.items() if len(s) >=5}
+print(nowy_slownik)
+
+#zadanie_07
+macierz = [
+    [1,2],
+    [3,4],
+    [5,6],
+    [7,8],
+    [9,10],
+    [11,12]
+]
+# Transpozycja - kolumny stają się wierszami
+transponowana = [[macierz[r][c] for r in range(6)] for c in range(2)]
+print(transponowana)
+
+#zadanie_09
+def czy_pierwsza(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+liczby_pierwsze = [x for x in range(2, 101) if czy_pierwsza(x)]
+print(liczby_pierwsze)
+
+#zadanie_010
+slowo = "python"
+
+# Zamiana każdej litery na przesuniętą o 3 miejsca w alfabecie
+szyfr = ''.join(
+    chr((ord(c) - ord('a') + 3) % 26 + ord('a')) if c.isalpha() and c.islower() else c
+    for c in slowo
+)
+
+print(szyfr)
+
+#zadanie_011
+
+fib = [0, 1]
+
+while fib[-1] < 100:
+    fib.append(fib[-1] + fib[-2])
+
+# Usuwamy ostatnią liczbę jeśli przekracza 100
+if fib[-1] > 100:
+    fib.pop()
+
+# Filtrujemy tylko parzyste
+parzyste_fib = [x for x in fib if x % 2 == 0]
+
+print(parzyste_fib)
+
+#zadania012
+zdania = [
+    "To jest pierwsze zdanie",
+    "A to kolejne zdanie do testu",
+    "Python jest fajny"
+]
+
+# Rozbijamy zdania na słowa, bierzemy tylko te z min 4 liter i zamieniamy na duże litery
+slowa_duze = [slowo.upper() for zdanie in zdania for slowo in zdanie.split() if len(slowo) >= 4]
+
+print(slowa_duze)
+
+#zadanie013
+
