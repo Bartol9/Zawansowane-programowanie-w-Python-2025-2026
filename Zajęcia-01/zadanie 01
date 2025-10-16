@@ -1,1 +1,95 @@
+import random
+import statistics
+##zadanie 4
 
+#generowanie 10-elementowej tupli
+tnums = tuple(random.randint(2, 15) for _ in range(10))
+print("Początkowa tupla:", tnums)
+
+# a) wypisanie wszystkich elementów tupli wraz z indeksami
+print("\n[a] Elementy tupli z indeksami:")
+for i, val in enumerate(tnums):
+    print(f"Indeks {i} -> {val}")
+
+# b) średnie: arytmetyczna, geometryczna, harmoniczna
+mean_ar = statistics.mean(tnums)
+mean_geo = statistics.geometric_mean(tnums)
+mean_har = statistics.harmonic_mean(tnums)
+
+print("\n[b] Średnie z tupli:")
+print(f"Średnia arytmetyczna: {mean_ar}")
+print(f"Średnia geometryczna: {mean_geo}")
+print(f"Średnia harmoniczna: {mean_har}")
+
+# c) zlicz wszystkie wystąpienia liczby 3 i 5
+count_3 = tnums.count(3)
+count_5 = tnums.count(5)
+
+print("\n[c] Liczba wystąpień:")
+print(f"3 → {count_3} razy")
+print(f"5 → {count_5} razy")
+
+
+# lista przedmiotów
+sub = ["mat", "stat", "ang", "python", "BI", "ML", "AI", "SQL"]
+
+# lista studentów (imiona)
+names = ["Ania", "Kasia", "Marek", "Franek", "Zosia", "Magda", "Adam", "Michał"]
+
+# lista ID (tyle samo elementów co names)
+ids = list(range(23222, 23222 + len(names)))
+print(ids)
+
+group = [
+    (ids[i], names[i], random.sample(sub, k=random.randint(1, len(sub))))
+    for i in range(len(names))
+]
+print("Grupa studentów:")
+for student in group:
+    print(student)
+
+import string
+
+# duże litery alfabetu
+letters = list(string.ascii_uppercase)
+
+# wyrażenie listowe grupujące co 5 liter
+groups5 = [letters[i:i+5] for i in range(0, len(letters), 5)]
+print(groups5)
+
+letters = list(string.ascii_uppercase)
+lista_licznosci = [3, 4, 5, 2, 7, 5]   # przykładowy podział
+
+#B
+groups_custom = [letters[sum(lista_licznosci[:i]): sum(lista_licznosci[:i+1])]
+                 for i in range(len(lista_licznosci))]
+
+print(groups_custom)
+#C
+pairs = [(x, y) for x in range(1, 10) if x % 2 == 0
+                 for y in range(1, 10) if y % 2 != 0]
+
+print(pairs)
+
+
+student_grades = [("Alice", 5), ("Bob", 4), ("Eve", 3), ("AAA", "BBB")]
+
+# tworzymy słownik, odrzucając wartości nieliczbowe
+grades_dict = {name: grade for name, grade in student_grades if isinstance(grade, (int, float))}
+
+print("Słownik ocen:", grades_dict)
+
+
+# dane
+smak = ["śmietankowe", "pistacjowe", "truskawkowe", "jagodowe", "cytrynowe"]
+rozmiar = ["duże", "małe"]
+dodatek = ["polewa czekoladowa", "polewa karmelowa", "posypka czekoladowa", "posypka kolorowa"]
+
+# zbiór wszystkich możliwych kombinacji
+lody = {(r, s, d) for r in rozmiar for s in smak for d in dodatek}
+
+print("Wszystkie kombinacje lodów (rozmiar, smak, dodatek):")
+for l in lody:
+    print(l)
+
+print("\nLiczba wszystkich kombinacji:", len(lody))
