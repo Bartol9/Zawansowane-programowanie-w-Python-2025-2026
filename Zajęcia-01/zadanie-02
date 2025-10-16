@@ -146,4 +146,76 @@ slowa_duze = [slowo.upper() for zdanie in zdania for slowo in zdanie.split() if 
 print(slowa_duze)
 
 #zadanie013
+# Lista list z kwadratami: dla każdej liczby i od 1 do 5
+# bierzemy kolejne liczby i, i+1, ..., 5 i liczymy ich kwadraty
+lista_kwadratow_kolejne = []              # tu zbierzemy listy
+for i in range(1, 6):                      # i = 1,2,3,4,5
+    jedna_podlista = []                    # kwadraty zaczynając od i aż do 5
+    for j in range(i, 6):                  # j = i, i+1, ..., 5
+        jedna_podlista.append(j ** 2)      # dodaj kwadrat j
+    lista_kwadratow_kolejne.append(jedna_podlista)
 
+print("Zadanie 13:", lista_kwadratow_kolejne)
+
+# Zadanie 14
+# Słownik: klucze to liczby, wartości to ich kwadraty (dla 1..5).
+slownik_kwadratow = {}
+for x in range(1, 6):
+    slownik_kwadratow[x] = x ** 2
+
+print("Zadanie 14:", slownik_kwadratow)
+
+# Zadanie 15
+# Tylko parzyste klucze i ich kwadraty (np. 2,4,...).
+slownik_parzyste_kwadraty = {}
+for x in range(1, 11):         # zakres przykładowo do 10, można zmienić
+    if x % 2 == 0:             # sprawdzenie parzystości
+        slownik_parzyste_kwadraty[x] = x ** 2
+
+print("Zadanie 15:", slownik_parzyste_kwadraty)
+
+# Zadanie 16
+# Mając istniejący słownik, zamieniamy klucze z wartościami.
+
+oryg = {1: "jeden", 2: "dwa", 3: "trzy"}   # przykładowy słownik
+zamieniony = {}
+for klucz, wartosc in oryg.items():
+    zamieniony[wartosc] = klucz
+
+print("Zadanie 16:", zamieniony)
+
+# Zadanie 17
+# Słownik: małe litery -> ich kody ASCII.
+
+male_litery = "abcdefghijklmnopqrstuvwxyz"
+litery_ascii = {}
+for lit in male_litery:
+    litery_ascii[lit] = ord(lit)    # ord daje kod ASCII/Unicode znaku
+
+print("Zadanie 17:", litery_ascii)
+
+
+# Zadanie 18
+
+# Zagnieżdżony słownik: liczba -> {"kwadrat": n^2, "szescian": n^3}
+
+slownik_zagniezdzony = {}
+for n in range(1, 6):
+    wewn = {
+        "kwadrat": n ** 2,
+        "szescian": n ** 3
+    }
+    slownik_zagniezdzony[n] = wewn
+
+print("Zadanie 18:", slownik_zagniezdzony)
+
+# Zadanie 19
+# Słownik: klucze liczby, wartości ich kwadraty, ale tylko gdy kwadrat > 10.
+
+filtrowany_slownik = {}
+for x in range(1, 11):           
+    kw = x ** 2
+    if kw > 10:
+        filtrowany_slownik[x] = kw
+
+print("Zadanie 19:", filtrowany_slownik)
